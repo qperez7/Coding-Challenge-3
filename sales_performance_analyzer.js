@@ -36,4 +36,25 @@ salesData.forEach(name => {
     });
     salesData.sort((a,b) => a.sales - b.sales); // Output returns rates based on ascending averages
 
+// Task3 : Create a Function to Identify Top and Bottom Performers
+function findTopAndBottomPerformers(performer) { 
+    if (performer.length === 0) {
+        return {topPerformer: null,bottomPerformer: null};
+    }
+let salesVar = salesData.map(name => name.sales);
+const maxSales = Math.max(...salesVar);
+const minSales = Math.min(...salesVar);
+
+var topPerformer = salesData.find(name => name.sales === maxSales);
+var bottomPerformer = salesData.find(name => name.sales === minSales);
+    return {topPerformer, bottomPerformer};
+}
+salesData.forEach(name => {
+    findTopAndBottomPerformers(name);
+    });
+    salesData.sort((a,b) => a.sales - b.sales);
+const performanceResults = findTopAndBottomPerformers(salesData);
+console.log(performanceResults); // Output: Top and Bottom Performers in Ascending Order
+
+
 
