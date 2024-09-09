@@ -6,8 +6,9 @@ const salesData = [
     { name: 'Diana', sales: [9000, 8500, 9200] },
     ];
     function calculateAverageSales(name) {
-        let sum = name.sales.reduce((accumulator, currentValue) => accumulator + currentValue,0);
-    return sum / name.sales.length;
+        let nSales = name.sales
+        let sum = nSales.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+    return sum / nSales.length;
     }
     salesData.forEach(name => {
         name.sales =calculateAverageSales(name);
@@ -28,13 +29,13 @@ const salesData = [
     } else {
         console.log (`“Needs Improvement” for average sales below $4,000`);
     }
-    return rates;
-    
+    return {name,rates}
 }
 salesData.forEach(name => {
     determineperformanceRating(name);
     });
-    salesData.sort((a,b) => a.sales - b.sales); // Output returns rates based on ascending averages
+    salesData.sort((a,b) => a.sales - b.sales)
+; // Output returns rates based on ascending averages
 
 // Task3 : Create a Function to Identify Top and Bottom Performers
 function findTopAndBottomPerformers(performer) { 
@@ -55,6 +56,20 @@ salesData.forEach(name => {
     salesData.sort((a,b) => a.sales - b.sales);
 const performanceResults = findTopAndBottomPerformers(salesData);
 console.log(performanceResults); // Output: Top and Bottom Performers in Ascending Order
+
+// Task4 : Combine Functions to Generate a Performance Report
+function generatePerformanceReport (salesData) {     
+const Prates = determineperformanceRating(salesData); // Output this is not working in the array
+const {topPerformer,bottomPerformer} = findTopAndBottomPerformers(salesData);
+    return {
+        Prates, topPerformer, bottomPerformer };}
+salesData.forEach(name => {
+            generatePerformanceReport(name);
+            });
+            salesData.sort((a,b) => a.sales - b.sales);
+let performanceReport = generatePerformanceReport(salesData)
+console.log(performanceReport); // Output: I could not get the determine performance rating in the array or the average function.
+
 
 
 
