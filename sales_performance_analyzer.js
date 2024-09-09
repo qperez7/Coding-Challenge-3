@@ -69,7 +69,9 @@ salesData.forEach(name => {
             salesData.sort((a,b) => a.sales - b.sales);
 let performanceReport = generatePerformanceReport(salesData)
 console.log(performanceReport); // Output: I could not get the determine performance rating in the array or the average function.
-
+// Task5: Test Your Functions with Sample Data
+// Output: All functions where tested from the beginning using the data.
+// Although I could not combine them in Task4.
 
 
 
